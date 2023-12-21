@@ -1,0 +1,100 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "category": "Islamic Wedding",
+      "name": "Traditional Islamic Wedding",
+      "image": "https://i.ytimg.com/vi/8OC8Qb6HOEE/maxresdefault.jpg",
+      "price": "$10,000",
+      "description": "Experience the magic of a timeless Traditional Islamic Wedding. Immerse yourself in cultural rituals that unite two souls in love, creating unforgettable memories filled with joy and spiritual significance."
+    },
+    {
+      "id": "2",
+      "category": "Islamic Conference",
+      "name": "Islamic Scholars Conference",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjy3rUab6NI2WleA10hhRLscjcQwpKeXFyfg&usqp=CAU",
+      "price": "$5,000",
+      "description": "Join us for the Islamic Scholars Conference, where renowned scholars gather to enlighten minds. Explore deep insights into Islam's teachings, fostering intellectual growth and unity within our community."
+    },
+    {
+      "id": "3",
+      "category": "Hajj Group Travel",
+      "name": "Hajj Pilgrimage Tour",
+      "image": "https://thesawari.com/uploads/packages/1682621479.jpg",
+      "price": "$8,000",
+      "description": "Embark on a transformative journey with our Hajj Pilgrimage Tour. We handle all logistics, ensuring a seamless pilgrimage experience. Strengthen your faith and connect with fellow pilgrims on this sacred voyage."
+    },
+    {
+      "id": "4",
+      "category": "Islamic Cultural Event",
+      "name": "Islamic Arts and Culture Festival",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjy3rUab6NI2WleA10hhRLscjcQwpKeXFyfg&usqp=CAU",
+      "price": "$3,500",
+      "description": "Celebrate the vibrant tapestry of Islamic arts and culture at our festival. From mesmerizing music to captivating art and delectable cuisine, immerse yourself in the beauty and diversity of Islamic heritage."
+    },
+    {
+      "id": "5",
+      "category": "Quran Recitation Contest",
+      "name": "Annual Quran Recitation Competition",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLpNfjhX5mOiUiuKmnyomIPOkMgeC96CDt_Q&usqp=CAU",
+      "price": "$1,200",
+      "description": "Witness the melodious recitation of the Quran at our prestigious competition. Quranic scholars from across the region showcase their talents, inspiring a deeper connection to the Holy Book."
+    },
+    {
+      "id": "6",
+      "category": "Islamic Charity Gala",
+      "name": "Ramadan Charity Gala",
+      "image": "https://muslimcharity.org.uk/wp-content/uploads/2019/07/L20-2.jpg",
+      "price": "$5,500",
+      "description": "Join us for an elegant Ramadan Charity Gala, where we come together to make a difference. Your presence and support during this holy month contribute to noble causes, spreading hope and compassion."
+    },
+    {
+      "id": "7",
+      "category": "Islamic Art Exhibition",
+      "name": "Islamic Calligraphy Exhibition",
+      "image": "https://gumlet.assettype.com/greaterkashmir%2Fimport%2F2019%2F07%2Firan-culture.jpg?w=1200&auto=format%2Ccompress&ogImage=true&enlarge=true",
+      "price": "$2,000",
+      "description": "Experience the exquisite beauty of Islamic calligraphy at our art exhibition. Each stroke carries deep meaning and spirituality, inviting you to explore the rich heritage of Islamic art."
+    },
+    {
+      "id": "8",
+      "category": "Islamic Retreat",
+      "name": "Spiritual Retreat in Nature",
+      "image": "https://ymsite.com/wp-content/uploads/2022/12/musabHalaqa-2.jpg",
+      "price": "$3,800",
+      "description": "Reconnect with your inner self at our Spiritual Retreat in the heart of nature. Find peace, serenity, and spiritual rejuvenation in the tranquil embrace of the natural world."
+    },
+    {
+      "id": "9",
+      "category": "Islamic Sports Tournament",
+      "name": "Islamic Games Challenge",
+      "image": "https://naleemiah.edu.lk/wp-content/uploads/2017/08/DSCN7387.jpg",
+      "price": "$20 per participant",
+      "description": "Join our friendly and spirited Islamic Games Challenge. Compete in sports like soccer, volleyball, and table tennis, building bonds and sportsmanship within the community."
+    },
+    {
+      "id": "10",
+      "category": "Islamic Book Fair",
+      "name": "Islamic Literature Fair",
+      "image": "https://islamicbook-fair.com/wp-content/uploads/2021/08/IKAPI-DKI-Jakarta-Akan-Gelar-Islamic-Book-Fair-2022-di-JCC.png",
+      "price": "Free admission",
+      "description": "Explore a world of knowledge at our Islamic Literature Fair. From books to thought-provoking discussions, immerse yourself in the rich tapestry of Islamic literature and ideas."
+    },
+    {
+      "id": "11",
+      "category": "Islamic Youth Camp",
+      "name": "Youth Leadership Camp",
+      "image": "https://www.wuft.org/news/files/2019/07/MuslimYouth01-1024x699.jpg",
+      "price": "$500 per participant",
+      "description": "Empower young Muslims through leadership training and outdoor adventures. Our Youth Leadership Camp fosters personal growth, teamwork, and leadership skills."
+    },
+    {
+      "id": "12",
+      "category": "Islamic Lecture Series",
+      "name": "Enlightening Talks Series",
+      "image": "https://pbs.twimg.com/media/Fr7QR3gWcDYgMJS.jpg:large",
+      "price": "Free",
+      "description": "Expand your horizons with our Enlightening Talks Series. Renowned speakers delve into Islamic theology and contemporary issues, sparking meaningful discussions that inspire personal growth."
+    }
+  ]
+}
