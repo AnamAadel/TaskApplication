@@ -1,6 +1,8 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import React from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import ReactDOM from 'react-dom/client';
 import {
   RouterProvider
@@ -16,10 +18,13 @@ AOS.init();
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
   <AuthProvider>
+  <DndProvider backend={HTML5Backend}>
     <EventContext>
 
       <RouterProvider router={router} />
     </EventContext>
+
+  </DndProvider>
 
   </AuthProvider>
   </React.StrictMode>,

@@ -18,6 +18,8 @@ function AuthProvider({ children }) {
   const [userPhoto, setUserPhoto] = useState(null);
   const [userName, setUserName] = useState('');
   const [loading, setLoading] = useState(true);
+  const [isShow, setIsShow] = useState(false);
+
   const auth = getAuth(app);
   const storage = getStorage(app)
   const authProviderGoogle = new GoogleAuthProvider();
@@ -211,7 +213,9 @@ function AuthProvider({ children }) {
     userName,
     mongoCurrentUser,
     cartProduct,
-    setCartProduct
+    setCartProduct,
+    isShow, 
+    setIsShow
   }
 
   useEffect(() => {
