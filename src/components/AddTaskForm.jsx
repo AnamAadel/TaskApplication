@@ -4,16 +4,21 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from 'react-hook-form';
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 import swal from 'sweetalert';
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useGetTaskData from "../hooks/useGetTaskData";
 import { AuthContexts } from './context/AuthContext';
-function AddTaskForm() {
+
+
+function AddTaskForm({setIsChangeStatus}) {
   const { isShow, setIsShow, user } = AuthContexts();
   const axiosSecure = useAxiosSecure();
   const screen = isShow ? "flex" : "none"
   const [startDate, setStartDate] = useState(new Date());
   const [addTaskPending, setAddTaskPending] = useState(false);
   const navigation = useNavigate();
+  const [refetch] = useGetTaskData();
   const {
     register,
     handleSubmit,
@@ -27,24 +32,20 @@ function AddTaskForm() {
     setAddTaskPending(true)
     data = { ...data, email: user?.email, date: startDate.toLocaleDateString(), status: "to-do" }
 
-    axiosSecure.post("/bookings", data).then(res => {
+    axiosSecure.post("/task", data).then(res => {
 
       setAddTaskPending(false)
+      console.log(res)
+      if(res.data.acknowledged){
+          toast.success("Task inserted successfully!", {
+            theme: "colored",
+            toastId: "success"
+    
+          });
+          setIsChangeStatus("" + (Math.random() * 100))
+          setIsShow(false)
 
-
-        swal({
-            title: "Confirm Booking!",
-            text: "Your Booking completed successfully!",
-            type: "success",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "See Your Booking",
-            closeOnConfirm: false
-        }).then(isConfirm => {
-            if (isConfirm) {
-                navigation("/dashboard/myBookings")
-            }
-        })
+      }
     }).catch(err => {
         console.log(err)
         setAddTaskPending(false)

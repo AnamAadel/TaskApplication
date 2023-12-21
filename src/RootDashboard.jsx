@@ -12,7 +12,7 @@ function RootDashboard() {
               <div className='flex gap-6'>
                 <SideBar />
                 <Outlet />
-                <AddTaskForm />
+                
               </div>
             }
             {loading &&  <div className='min-h-screen w-full fixed z-50 flex justify-center bg-slate-300 items-center'><img src='https://cdn.slidevision.io/www/14304000000085015_loader.gif' className='w-72 mix-blend-multiply' /></div> }
