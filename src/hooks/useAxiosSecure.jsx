@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { AuthContexts } from "../components/context/AuthContext";
 
 const axiosSecure = axios.create({
-    baseURL: "http://localhost:5000"
-    // baseURL: "https://assignment-12-server-vercel.vercel.app"
+    // baseURL: "http://localhost:5000"
+    baseURL: "https://task-application-server.vercel.app"
 })
 // Add a request interceptor
 
