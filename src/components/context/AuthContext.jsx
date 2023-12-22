@@ -13,12 +13,12 @@ export const AuthContexts = () => {
 function AuthProvider({ children }) {
 
   const [user, setUser] = useState(null)
-  const [mongoCurrentUser, setMongoCurrentUser] = useState(null)
-  const [cartProduct, setCartProduct] = useState([]);
   const [userPhoto, setUserPhoto] = useState(null);
   const [userName, setUserName] = useState('');
   const [loading, setLoading] = useState(true);
   const [isShow, setIsShow] = useState(false);
+  const [isFormShow, setIsFormShow] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   const auth = getAuth(app);
   const storage = getStorage(app)
@@ -30,7 +30,6 @@ function AuthProvider({ children }) {
   const createUser = (email, password, userName, file) => {
     setLoading(true);
     createUserWithEmailAndPassword(auth, email, password).then(result => {
-      // sendEmailVerification(auth.currentUser).then(()=> console.log("email varification send to  your email!")).catch(err => console.log(err))
 
       const storageRef = ref(storage, `users/${result.user.uid}.jpg`);
 
@@ -72,7 +71,7 @@ function AuthProvider({ children }) {
       }).catch((err) => console.log(err))
 
       setUser(result.user)
-      console.log(result.user);
+      navigation("/dashboard")
       toast.success("User created successfully!", {
         theme: "colored",
         toastId: "success"
@@ -92,8 +91,8 @@ function AuthProvider({ children }) {
     setLoading(true);
     signInWithEmailAndPassword(auth, email, password).then(result => {
       setUser(result.user)
-      console.log(result);
       setLoading(false);
+      
       toast.success("User login successfully!", {
         theme: "colored",
         toastId: "success"
@@ -114,78 +113,12 @@ function AuthProvider({ children }) {
 
 
   const handleGoogleSignIn = () => {
-    setLoading(true);
-    signInWithPopup(auth, authProviderGoogle).then(async (result) => {
-      setUser(result.user)
-      setLoading(false);
-      toast.success("Login successfully!", {
-        theme: "colored",
-        toastId: "success"
-
-      });
-
-      const user = { userName: result.user.displayName, email: result.user.email, userImage: result.user.photoURL, creationTime: result.user.metadata.creationTime, lastLoginTime: result.user.metadata.lastSignInTime, status: "active" }
-
-      try {
-        const res = await fetch("https://assignment-10-server-6yim5dfbc-aadelbanat8991-gmailcom.vercel.app/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json"
-          },
-          body: JSON.stringify(user)
-        })
-        const data = await res.json()
-        console.log(data);
-      } catch (error) {
-        console.log(error)
-      }
-
-
-    }).catch(error => {
-      console.log(error)
-      setLoading(false);
-      toast.warn(`An error happened`, {
-        theme: "colored"
-      });
-    })
+    
+    return signInWithPopup(auth, authProviderGoogle)
   }
 
   const handleGithubSignIn = () => {
-    setLoading(true);
-    signInWithPopup(auth, authProviderGithub).then(async (result) => {
-      console.log(result);
-      setUser(result.user)
-      setLoading(false);
-
-      const user = { userName: result.user.displayName, email: result.user.email, userImage: result.user.photoURL, creationTime: result.user.metadata.creationTime, lastLoginTime: result.user.metadata.lastSignInTime, status: "active" }
-      
-      try {
-        const res = await fetch("https://assignment-10-server-6yim5dfbc-aadelbanat8991-gmailcom.vercel.app/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json"
-          },
-          body: JSON.stringify(user)
-        })
-        const data = await res.json()
-        console.log(data);
-      } catch (error) {
-        console.log(error)
-      }
-
-
-      toast.success("User login successfully!", {
-        theme: "colored",
-        toastId: "success"
-
-      });
-    }).catch(error => {
-      console.log(error)
-      setLoading(false);
-      toast.warn(`An error happened`, {
-        theme: "colored"
-      });
-    })
+    return signInWithPopup(auth, authProviderGithub)
   }
 
   const handleFacebookSignIn = () => {
@@ -208,14 +141,16 @@ function AuthProvider({ children }) {
     signInUser,
     logOutUser,
     user,
-    loading,
+    loading, 
+    setLoading,
     userPhoto,
     userName,
-    mongoCurrentUser,
-    cartProduct,
-    setCartProduct,
     isShow, 
-    setIsShow
+    setIsShow,
+    isFormShow,
+    setIsFormShow,
+    showSidebar, 
+    setShowSidebar
   }
 
   useEffect(() => {
@@ -232,8 +167,6 @@ function AuthProvider({ children }) {
             body: JSON.stringify({email: currentUser?.email})
           });
           const jsonData = await res.json();
-          setMongoCurrentUser(jsonData);
-          setCartProduct(jsonData.products)
           console.log(jsonData)
         } catch (error) {
           console.log(error)

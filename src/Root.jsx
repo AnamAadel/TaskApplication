@@ -1,5 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 import Footer from './components/Footer'
 import { AuthContexts } from './components/context/AuthContext'
 import Navbar from './pages/shared/Navbar'
@@ -11,6 +12,7 @@ function Root() {
             {!loading && 
               <>
                 <Navbar />
+                <ToastContainer />
                 <Outlet />
                 <Footer />
               </>

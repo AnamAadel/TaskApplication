@@ -4,7 +4,7 @@ import useAxiosSecure from '../hooks/useAxiosSecure';
 import ListItem from './ListItem';
 import { AuthContexts } from './context/AuthContext';
 
-function TodoList({title, length, color, placeName, tasks, setIsChangeStatus, isFetching}) {
+function TodoList({title, color, placeName, tasks, setIsChangeStatus, isFetching, setTaskId}) {
     const axiosSecure = useAxiosSecure();
     const {user} = AuthContexts();
     
@@ -31,10 +31,18 @@ function TodoList({title, length, color, placeName, tasks, setIsChangeStatus, is
         <div className={`absolute top-0 left-0 bg-neutral w-full flex justify-center items-center z-50 transition-all duration-300 overflow-hidden ${isOver  ? "h-full" : "h-0"}`} >
             <h4 className='text-white font-semibold text-5xl '>Drop</h4>
         </div>
-        <div className='max-h-screen overflow-auto space-y-4'>
+        <div className='max-h-screen min-h-[400px] overflow-auto space-y-4'>
             {
                 !isFetching ? tasks.map(item => (
-                    <ListItem key={item._id} color={color} id={item._id} item={item} placeName={placeName}  setIsChangeStatus={setIsChangeStatus} />
+                    <ListItem 
+                        key={item._id} 
+                        color={color} 
+                        id={item._id} 
+                        item={item} 
+                        placeName={placeName}  
+                        setIsChangeStatus={setIsChangeStatus}
+                        setTaskId={setTaskId}
+                    />
 
                 )):
                 <span className="loading loading-dots loading-lg mx-auto block text-white"></span>

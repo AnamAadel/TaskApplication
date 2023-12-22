@@ -1,33 +1,18 @@
-import React, { useEffect } from 'react'
-import { useDrag } from 'react-dnd'
+import React, { useState } from 'react';
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+function Box({item}) {
+    const [showDescription, SetShowDescription] = useState(false)
 
-const typeItem = {
-    Box: "box"
-}
-function Box({name}) {
-    const [isDragging, drag] = useDrag(()=> ({
-        type: typeItem.Box,
-        item: {name}, 
-        end: (item, monitor)=> {
-            console.log("item end:",item)
-            console.log("monitor end:",monitor);
-        },
-        collect: (monitor)=> ({
-            isDragging: monitor.isDragging(),
-            handlerId: monitor.getHandlerId()
-        })
-    }))
-
-    
-    useEffect(()=> {
-        console.log("isDragging", isDragging )
-        console.log("drag", drag )
-
-    },[drag, isDragging])
-    
-  return (
-    <div ref={drag} className='min-w-[100px] h-[100px] flex justify-center items-center border-2'>{name}</div>
-  )
+    return (
+        <div className="flex flex-col max-w-md p-6 dark:bg-gray-900 dark:text-gray-100 gap-2 border bg-white relative">
+        <button className='absolute top-[28px] right-3' onClick={()=> SetShowDescription(!showDescription)}>{showDescription ? <IoIosArrowUp />: <IoIosArrowDown />}  </button>
+        
+            <h2 className="text-xl font-semibold">{item.title}</h2>
+                <p className={showDescription ? "h-fit overflow-visible": "h-0 overflow-hidden"} >{item.description}</p>
+                <p><b  className='text-orange-500'>Deadline: </b> <span >{item.date}</span></p>
+                <p ><b className='text-green-500'>Priority: </b> <span>{item.priority}</span></p>
+        </div>
+    )
 }
 
 export default Box

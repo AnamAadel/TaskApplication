@@ -9,7 +9,7 @@ function useGetTaskData() {
     const {data: taskData = [], isFetching, error, refetch} = useQuery({
       queryKey: ["task", user?.email],
       queryFn: async ()=> {
-      const res = await axiosSecure.get(`/task`);
+      const res = await axiosSecure.get(`/task?email=${user?.email}`);
       return res.data
 
       }

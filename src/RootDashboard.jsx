@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import AddTaskForm from './components/AddTaskForm';
+import { ToastContainer } from 'react-toastify';
+import DashboardNav from './components/DashboardNav';
 import SideBar from './components/SideBar';
 import { AuthContexts } from './components/context/AuthContext';
 
@@ -8,10 +9,16 @@ function RootDashboard() {
   const {loading} = AuthContexts();
   return (
     <>
+          <ToastContainer />
             {!loading && 
               <div className='flex gap-6'>
                 <SideBar />
+                <DashboardNav />
+                <div className='md:pl-[320px] w-full'>
                 <Outlet />
+                
+
+                </div>
                 
               </div>
             }

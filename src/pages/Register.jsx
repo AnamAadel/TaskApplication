@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { AuthContexts } from "../components/context/AuthContext";
 
 
 function Register() {
-    const {handleGoogleSignIn, handleGithubSignIn, createUser} =  AuthContexts();
+    const {handleGoogleSignIn, handleGithubSignIn, createUser ,setLoading, setUser} =  AuthContexts();
     const [showPassword, setShowPassword] = useState(false);
+    const navigation = useNavigate();
 
     const handleCreateUser = (e)=> {
         e.preventDefault()
@@ -20,9 +21,7 @@ function Register() {
 
         const userImage = file ? file : null;
 
-        console.log(file)
-        // console.log(password)
-        // console.log(userName)
+        
         if(/^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{6,}$/.test(password)){
 
             createUser(email, password, userName, userImage)
@@ -43,17 +42,61 @@ function Register() {
         console.log(showPassword)
 
     }
+
+    const githubLoginWithPopup = ()=> {
+        setLoading(true)
+        handleGithubSignIn().then(async (result) => {
+            setUser(result.user)
+            setLoading(false);
+            toast.success("Login successfully!", {
+              theme: "colored",
+              toastId: "success"
+      
+            });
+            navigation("/dashboard")
+      
+          }).catch(error => {
+            console.log(error)
+            setLoading(false);
+            toast.warn(`An error happened`, {
+              theme: "colored"
+            });
+          })
+        
+    }
+
+    const googleLoginWithPopup = ()=> {
+        setLoading(true)
+        handleGoogleSignIn().then(async (result) => {
+            setUser(result.user)
+            setLoading(false);
+            toast.success("Login successfully!", {
+              theme: "colored",
+              toastId: "success"
+      
+            });
+            navigation("/dashboard")
+      
+          }).catch(error => {
+            console.log(error)
+            setLoading(false);
+            toast.warn(`An error happened`, {
+              theme: "colored"
+            });
+          })
+        
+    }
     return (
         <div className="hero min-h-screen bg-base-200">
         <ToastContainer />
             <div className="hero-content flex-col lg:flex-row-reverse">
 
                 <div className="flex flex-col gap-4 text-5xl p-6 text-left">
-                    <button onClick={handleGoogleSignIn} className="cursor-pointer border-4 rounded-full text-lg p-4 flex gap-2 items-center">
+                    <button onClick={googleLoginWithPopup}  className="cursor-pointer border-4 rounded-full text-lg p-4 flex gap-2 items-center">
                         <FcGoogle className='text-4xl' />
                         Continue With Google
                     </button>
-                    <button onClick={handleGithubSignIn} className="cursor-pointer border-4 rounded-full text-lg p-4 gap-2 flex items-center ">
+                    <button onClick={githubLoginWithPopup} className="cursor-pointer border-4 rounded-full text-lg p-4 gap-2 flex items-center ">
                         <BsGithub className='text-4xl' />
                         Continue With Github
                     </button>

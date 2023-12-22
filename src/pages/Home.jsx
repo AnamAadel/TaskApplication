@@ -1,8 +1,9 @@
+import Hero from "../components/Hero"
 
 function Home() {
   return (
     <div className='' >
-        {/* <Hero /> */}
+        <Hero />
         {/* <Dustbin />
         <div className="flex gap-4">
           <Box name="pan" />

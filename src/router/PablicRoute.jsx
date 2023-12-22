@@ -8,7 +8,7 @@ function PablicRoute({ children }) {
   return (
     <div>
       {!user && children}
-      {user && <Navigate to="/" />}
+      {user && <Navigate to="/dashboard" />}
     </div>
   );
 }
